@@ -7,6 +7,6 @@ export default function Main(){
                flexDirection: 'column'}}>
             <FilterBox/>
             {/* <StudentsList/> */} 
-            <Outlet/>
+            {<Outlet/>}
       </div>;
 }

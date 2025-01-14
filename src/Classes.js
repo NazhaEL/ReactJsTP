@@ -5,7 +5,8 @@ import SearchContext from "./SearchContext";
 import ClassItem from "./ClassItem";
 
 export default function StudentsList(){
-      const {search}  =useContext(SearchContext)
+      // const {search}  =useContext(SearchContext)
+      const search = '';
       const classes = [
            {id: 0, level: 'TPS', 
              name: 'AAA'},

@@ -15,6 +15,9 @@ export default function MenuLeft(){
                   <div>
                         <Link to="/classes">classes</Link>
                   </div>
+                  <div>
+                        <Link to="/posts">posts</Link>
+                  </div>
             </div>
             
       </div>;
