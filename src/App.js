@@ -1,33 +1,40 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SearchProvider from "./SearchProvider";
-import MainLayout from "./MainLayout";
-import { lazy } from "react";
-import { Provider } from "react-redux";
-import store from './store'
-// import Welcome, { Welcome3 } from "./Welcome";
+import React, { useState } from "react";
+import MemoryGame from "./MemoryGame";
+import Menu from "./Menu";
+import History from "./History";
+import "./App.css";
 
-const StudentsList = lazy(() => import('./Students'));
-const ClassesList = lazy(() => import('./Classes'));
-const PostsList = lazy(() => import('./Posts'));
+const App = () => {
+  const [gameMode, setGameMode] = useState(4);
+  const [background, setBackground] = useState("lightblue");
 
+  const handleModeChange = (mode) => setGameMode(mode);
+  const handleBackgroundChange = (color) => setBackground(color);
 
-function App() {
   return (
-    <BrowserRouter>
-      {/* <SearchProvider> */}
-      <Provider store={store}>
-        <Routes>
-          <Route path="/" element={<MainLayout/>}>
-            <Route path="/" element={<StudentsList/>}/>
-            <Route path="/classes" element={<ClassesList/>}/>
-            <Route path="/classes/:id/students" element={<StudentsList/>}/>
-            <Route path="/posts" element={<PostsList/>}/>
-          </Route>
-        </Routes>
-      </Provider>
-      {/* </SearchProvider> */}
-    </BrowserRouter>
+    <div className="app" style={{ background }}>
+      <header>
+        <h1>Memory Card Game</h1>
+      </header>
+
+      <div className="menu-section">
+          <Menu
+            onModeChange={handleModeChange}
+            onBackgroundChange={handleBackgroundChange}
+          />
+        </div>
+
+      <div className="main-content">
+        <div className="game-section">
+          <MemoryGame gameMode={gameMode} />
+        </div>
+
+        <div className="history-section">
+          <History />
+        </div>
+      </div>
+    </div>
   );
-}
+};
 
 export default App;
